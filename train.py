@@ -283,9 +283,9 @@ class ExperimentRunner:
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
         
-        self.train_dataset = CustomDataset(root_dir='split_dataset/train', transform=self.train_transform)
-        self.val_dataset = CustomDataset(root_dir='split_dataset/val', transform=self.val_transform)
-        self.test_dataset = CustomDataset(root_dir='split_dataset/test', transform=self.val_transform)
+        self.train_dataset = CustomDataset(root_dir='Wheat_Disease_Dataset/train', transform=self.train_transform)
+        self.val_dataset = CustomDataset(root_dir='Wheat_Disease_Dataset/val', transform=self.val_transform)
+        self.test_dataset = CustomDataset(root_dir='Wheat_Disease_Dataset/test', transform=self.val_transform)
         
         self.train_loader = DataLoader(self.train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
         self.val_loader = DataLoader(self.val_dataset, batch_size=batch_size, shuffle=False, num_workers=4)
@@ -335,7 +335,7 @@ def LPNet(num_classes=5):
 
 
 def main():
-    num_classes = len(os.listdir('split_dataset/train'))
+    num_classes = len(os.listdir('Wheat_Disease_Dataset/train'))
     runner = ExperimentRunner(num_classes=num_classes, num_epochs=200)
     
     models_to_test = [
